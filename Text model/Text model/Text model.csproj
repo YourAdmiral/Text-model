@@ -8,9 +8,6 @@
 
   <ItemGroup>
     <Folder Include="Factories\" />
-    <Folder Include="TextItems\Sentences\Words\" />
-    <Folder Include="TextItems\Sentences\Punctuations\" />
-    <Folder Include="TextItems\Sentences\Symbols\" />
   </ItemGroup>
 
 </Project>

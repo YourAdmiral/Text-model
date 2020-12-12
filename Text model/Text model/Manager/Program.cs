@@ -1,4 +1,5 @@
 ﻿using System;
+using Text_model;
 
 namespace Text_model
 {
