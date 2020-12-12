@@ -4,9 +4,10 @@ using System.Text;
 
 namespace Text_model
 {
-    internal interface IWord : ISentenceItem
+    internal interface IWord : ISentenceItem, IEnumerable<Symbol>
     {
-        public int Length { get; set; }
-        public Symbol this[int index] { get; set; }
+        public int Length { get; }
+        public Symbol this[int index] { get; }
+        public Symbol[] Symbols { get; }
     }
 }

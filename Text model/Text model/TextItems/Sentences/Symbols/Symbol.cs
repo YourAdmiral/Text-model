@@ -14,11 +14,11 @@ namespace Text_model
         }
         public Symbol(string chars)
         {
-            this._chars = chars;
+            _chars = chars;
         }
         public Symbol(char source)
         {
-            this._chars = String.Format("{0}", source);
+            _chars = String.Format("{0}", source);
         }
         public bool IsUppercase
         {

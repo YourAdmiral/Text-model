@@ -6,6 +6,6 @@ namespace Text_model
 {
     internal interface IPunctuation : ISentenceItem
     {
-        public Symbol Value { get; set; }
+        public Symbol Value { get; }
     }
 }
