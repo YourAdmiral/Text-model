@@ -24,6 +24,14 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
+  <Class Name="Text_model.Text">
+    <Position X="8" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAABAAAAAAAAAAEAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>Text.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
   <Struct Name="Text_model.Symbol">
     <Position X="4" Y="0.5" Width="2" />
     <TypeIdentifier>
@@ -57,6 +65,13 @@
     <TypeIdentifier>
       <HashCode>AAIAAAAAAAAAAAAAAAAABAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ISentence.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Text_model.IText">
+    <Position X="8" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IText.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Font Name="Segoe UI" Size="9" />

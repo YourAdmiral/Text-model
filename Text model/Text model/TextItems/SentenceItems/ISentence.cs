@@ -6,8 +6,9 @@ namespace Text_model
 {
     internal interface ISentence : IEnumerable<ISentenceItem>
     {
-        public void Add(ISentenceItem item);
+        public ICollection<ISentenceItem> Items { get; }
         public bool Remove(ISentenceItem item);
         public int Count { get; }
+        public void Add(ISentenceItem item);
     }
 }
