@@ -36,7 +36,7 @@
     <Position X="9.75" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
-      <FileName>WordFactory.cs</FileName>
+      <FileName>Factories\WordFactory.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
@@ -44,9 +44,16 @@
     <Position X="9.75" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
-      <FileName>PunctuationFactory.cs</FileName>
+      <FileName>Factories\PunctuationFactory.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Text_model.Separator">
+    <Position X="11.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQBAIAAAAAAAAAAAAAAAQAAAAAAAAAAAJAAAAAAAAA=</HashCode>
+      <FileName>Separator.cs</FileName>
+    </TypeIdentifier>
   </Class>
   <Struct Name="Text_model.Symbol">
     <Position X="4" Y="0.5" Width="2" />
@@ -94,7 +101,7 @@
     <Position X="9.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
-      <FileName>ISentenceItemFactory.cs</FileName>
+      <FileName>Factories\ISentenceItemFactory.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Font Name="Segoe UI" Size="9" />
