@@ -6,8 +6,4 @@
 		<RootNamespace>Text_model</RootNamespace>
 	</PropertyGroup>
 
-	<ItemGroup>
-		<Folder Include="Factories\" />
-	</ItemGroup>
-
 </Project>

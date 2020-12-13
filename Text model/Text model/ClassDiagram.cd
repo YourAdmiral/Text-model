@@ -19,8 +19,8 @@
   <Class Name="Text_model.Sentence">
     <Position X="6.25" Y="2.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAIAAAAAAAAAABAAAAAABAQAABAAAAAEAAAAAAAAAAA=</HashCode>
-      <FileName>Sentence.cs</FileName>
+      <HashCode>AAIAAAAAAAAACBAAAAAABAQAAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>TextItems\SentenceItems\Sentence.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
@@ -28,7 +28,23 @@
     <Position X="8" Y="2.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AgAAAAAAAAAAABAAAAAAAAAAEAAAAAAEAAAAAAAAAAA=</HashCode>
-      <FileName>Text.cs</FileName>
+      <FileName>TextItems\Text.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Text_model.WordFactory">
+    <Position X="9.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>WordFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Text_model.PunctuationFactory">
+    <Position X="9.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>PunctuationFactory.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
@@ -63,15 +79,22 @@
   <Interface Name="Text_model.ISentence">
     <Position X="6.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAIAAAAAAAAAAAAAAAAABAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>ISentence.cs</FileName>
+      <HashCode>AAIAAAAAAAAACAAAAAAABAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TextItems\SentenceItems\ISentence.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="Text_model.IText">
     <Position X="8" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AgAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>IText.cs</FileName>
+      <FileName>TextItems\IText.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Text_model.ISentenceItemFactory">
+    <Position X="9.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>ISentenceItemFactory.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Font Name="Segoe UI" Size="9" />
