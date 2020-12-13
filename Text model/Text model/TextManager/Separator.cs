@@ -22,7 +22,7 @@ namespace Text_model
         {
             return _wordSeparators.AsEnumerable();
         }
-        public IEnumerable<string> All()
+        public IEnumerable<string> AllSeparators()
         {
             return _allSeparators.AsEnumerable();
         }

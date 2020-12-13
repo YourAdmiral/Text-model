@@ -27,7 +27,7 @@
   <Class Name="Text_model.Text">
     <Position X="8" Y="2.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AgAAAAAAAAAAABAAAAAAAAAAEAAAAAAEAAAAAAAAAAA=</HashCode>
+      <HashCode>AgAAAAAAAAAAABAACAAAAAAAEAAAAAAEAAAAAAAAAAg=</HashCode>
       <FileName>TextItems\Text.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -53,6 +53,13 @@
     <TypeIdentifier>
       <HashCode>AAQBAIAAAAAAAAAAAAAAAQAAAAAAAAAAAJAAAAAAAAA=</HashCode>
       <FileName>Separator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Text_model.Parser">
+    <Position X="13.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAAAQAAABgAAAAQAAAQACAAAAAAA=</HashCode>
+      <FileName>Parser.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Struct Name="Text_model.Symbol">

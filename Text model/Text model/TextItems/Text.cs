@@ -8,12 +8,12 @@ namespace Text_model
 {
     internal class Text : IText
     {
-        public ICollection<ISentence> Sentences { get; private set; }
+        public IList<ISentence> Sentences { get; private set; }
         public Text()
         {
             Sentences = new List<ISentence>();
         }
-        public Text(ICollection<ISentence> sentences)
+        public Text(IList<ISentence> sentences)
         {
             Sentences = sentences;
         }
@@ -35,6 +35,11 @@ namespace Text_model
         IEnumerator IEnumerable.GetEnumerator()
         {
             return Sentences.GetEnumerator();
+        }
+        public ISentence this[int index] => Sentences[index];
+        public string TextToString()
+        {
+            return null;
         }
     }
 }

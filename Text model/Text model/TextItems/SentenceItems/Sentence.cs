@@ -45,5 +45,9 @@ namespace Text_model
         {
             return Items.GetEnumerator();
         }
+        public string SentenceToString()
+        {
+            return null;
+        }
     }
 }
