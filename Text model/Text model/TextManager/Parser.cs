@@ -16,9 +16,5 @@ namespace Text_model
         {
             return null;
         }
-        public ISentence ParseSentence(string sentence)
-        {
-            return null;
-        }
     }
 }

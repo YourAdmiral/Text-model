@@ -8,12 +8,13 @@ namespace Text_model
 {
     internal class Sentence : ISentence
     {
-        public ICollection<ISentenceItem> Items { get; private set; }
+        private Separator _separator = new Separator();
+        public IList<ISentenceItem> Items { get; private set; }
         public Sentence()
         {
             Items = new List<ISentenceItem>();
         }
-        public Sentence(ICollection<ISentenceItem> source)
+        public Sentence(IList<ISentenceItem> source)
         {
             Items = source;
         }
@@ -47,7 +48,12 @@ namespace Text_model
         }
         public string SentenceToString()
         {
-            return null;
+            StringBuilder sb = new StringBuilder();
+            foreach (var item in Items)
+            {
+                sb.Append(item.Chars);
+            }
+            return sb.ToString();
         }
     }
 }
