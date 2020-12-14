@@ -8,23 +8,30 @@ namespace Text_model
     {
         static void Main(string[] args)
         {
-            IList<ISentenceItem> senteceItems = new List<ISentenceItem> {
-                new Word("This"),
-                new Punctuation(" "),
-                new Word("is"),
-                new Punctuation(" - "),
-                new Word("text"),
-                new Punctuation(","),
-                new Punctuation(" "),
-                new Word("and"),
-                new Punctuation(" "),
-                new Word("another"),
-                new Punctuation(" "),
-                new Word("text"),
-                new Punctuation(".")
+            WordFactory wordFactory = new WordFactory();
+            PunctuationFactory punctuationFactory = new PunctuationFactory();
+            IList<ISentenceItem> sentenceItems1 = new List<ISentenceItem>
+            {
+                wordFactory.Create("This"),
+                punctuationFactory.Create(" "),
+                wordFactory.Create("is"),
+                punctuationFactory.Create(" - "),
+                wordFactory.Create("text"),
+                punctuationFactory.Create("."),
             };
-            Sentence sentence = new Sentence(senteceItems);
-            Console.WriteLine(sentence.SentenceToString());
+            IList<ISentenceItem> sentenceItems2 = new List<ISentenceItem>
+            {
+                wordFactory.Create("And"),
+                punctuationFactory.Create(" "),
+                wordFactory.Create("another"),
+                punctuationFactory.Create(" "),
+                wordFactory.Create("text"),
+                punctuationFactory.Create(".")
+            };
+            ISentence sentence1 = new Sentence(sentenceItems1);
+            ISentence sentence2 = new Sentence(sentenceItems2);
+            IText text = new Text(new List<ISentence> { sentence1, sentence2 });
+            Console.WriteLine(text.TextToString());
         }
     }
 }

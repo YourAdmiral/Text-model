@@ -9,5 +9,6 @@ namespace Text_model
         public IList<ISentence> Sentences { get; }
         public void AddSentence(ISentence sentence);
         public void AddSentences(ICollection<ISentence> sentences);
+        public string TextToString();
     }
 }

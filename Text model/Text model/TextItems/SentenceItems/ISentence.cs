@@ -10,5 +10,6 @@ namespace Text_model
         public bool Remove(ISentenceItem item);
         public int Count { get; }
         public void Add(ISentenceItem item);
+        public string SentenceToString();
     }
 }

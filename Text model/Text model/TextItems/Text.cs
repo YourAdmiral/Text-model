@@ -39,7 +39,12 @@ namespace Text_model
         public ISentence this[int index] => Sentences[index];
         public string TextToString()
         {
-            return null;
+            StringBuilder sb = new StringBuilder();
+            foreach (ISentence sentence in Sentences)
+            {
+                sb.Append(sentence.SentenceToString() + " ");
+            }
+            return sb.ToString();
         }
     }
 }
