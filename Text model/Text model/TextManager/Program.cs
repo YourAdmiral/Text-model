@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Text;
 using Text_model;
 
 namespace Text_model
@@ -8,30 +10,15 @@ namespace Text_model
     {
         static void Main(string[] args)
         {
-            WordFactory wordFactory = new WordFactory();
-            PunctuationFactory punctuationFactory = new PunctuationFactory();
-            IList<ISentenceItem> sentenceItems1 = new List<ISentenceItem>
-            {
-                wordFactory.Create("This"),
-                punctuationFactory.Create(" "),
-                wordFactory.Create("is"),
-                punctuationFactory.Create(" - "),
-                wordFactory.Create("text"),
-                punctuationFactory.Create("."),
-            };
-            IList<ISentenceItem> sentenceItems2 = new List<ISentenceItem>
-            {
-                wordFactory.Create("And"),
-                punctuationFactory.Create(" "),
-                wordFactory.Create("another"),
-                punctuationFactory.Create(" "),
-                wordFactory.Create("text"),
-                punctuationFactory.Create(".")
-            };
-            ISentence sentence1 = new Sentence(sentenceItems1);
-            ISentence sentence2 = new Sentence(sentenceItems2);
-            IText text = new Text(new List<ISentence> { sentence1, sentence2 });
+            var parser = new Parser();
+            var streamReader = new StreamReader(@"E:\GitHub\Text-model\Text model\Text model\Text.txt", Encoding.Default);
+            var text = parser.ParseText(streamReader);
             Console.WriteLine(text.TextToString());
+            Console.WriteLine("First sentence: ");
+            foreach (var item in text.Sentences[1])
+            {
+                Console.WriteLine(item.Chars + " " + item.GetType());
+            }
         }
     }
 }

@@ -49,9 +49,37 @@ namespace Text_model
         public string SentenceToString()
         {
             StringBuilder sb = new StringBuilder();
-            foreach (var item in Items)
+            for (int i = 0; i < Items.Count; i++)
             {
-                sb.Append(item.Chars);
+                if (Items[i].GetType() == typeof(Word))
+                {
+                    if (i != Items.Count - 1 && Items[i + 1].GetType() == typeof(Word))
+                    {
+                        sb.Append(Items[i].Chars + " ");
+                    }
+                    else
+                    {
+                        sb.Append(Items[i].Chars);
+                    }
+                }
+                if (Items[i].GetType() == typeof(Punctuation))
+                {
+                    if (i != Items.Count - 1 && Items[i + 1].GetType() == typeof(Word))
+                    {
+                        if (_separator.QuotesSeparators().Contains(Items[i].Chars))
+                        {
+                            sb.Append(Items[i].Chars);
+                        }
+                        else
+                        {
+                            sb.Append(Items[i].Chars + " ");
+                        }
+                    }
+                    else
+                    {
+                        sb.Append(Items[i].Chars);
+                    }
+                }
             }
             return sb.ToString();
         }

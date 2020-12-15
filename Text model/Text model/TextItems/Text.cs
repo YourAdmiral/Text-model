@@ -42,7 +42,7 @@ namespace Text_model
             StringBuilder sb = new StringBuilder();
             foreach (ISentence sentence in Sentences)
             {
-                sb.Append(sentence.SentenceToString() + " ");
+                sb.Append(sentence.SentenceToString() + "\n");
             }
             return sb.ToString();
         }
