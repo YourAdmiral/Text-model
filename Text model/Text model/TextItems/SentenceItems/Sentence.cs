@@ -8,7 +8,6 @@ namespace Text_model
 {
     internal class Sentence : ISentence
     {
-        private Separator _separator = new Separator();
         public IList<ISentenceItem> Items { get; private set; }
         public Sentence()
         {
@@ -66,7 +65,7 @@ namespace Text_model
                 {
                     if (i != Items.Count - 1 && Items[i + 1].GetType() == typeof(Word))
                     {
-                        if (_separator.QuotesSeparators().Contains(Items[i].Chars))
+                        if (Separator.QuotesSeparators().Contains(Items[i].Chars))
                         {
                             sb.Append(Items[i].Chars);
                         }

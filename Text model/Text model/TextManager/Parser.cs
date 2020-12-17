@@ -10,7 +10,6 @@ namespace Text_model
 {
     internal class Parser
     {
-        private Separator _separator;
         private ISentenceItemFactory _wordFactory;
         private ISentenceItemFactory _punctuationFactory;
         private Regex _sentenceItems = new Regex(
@@ -35,7 +34,7 @@ namespace Text_model
                             _sentences.Split(readLine)
                             .Select(x => Regex.Replace(x.Trim(), @"\s+", @" "))
                             .ToArray();
-                        if (!_separator.SentenceSeparators().Contains(sentences.Last().Last().ToString()))
+                        if (!Separator.SentenceSeparators().Contains(sentences.Last().Last().ToString()))
                         {
                             buffer = sentences.Last();
                             textResult.Sentences.AddSentence(sentences.Select(x => x)
@@ -65,7 +64,7 @@ namespace Text_model
         {
             ISentence result = new Sentence();
             Func<string, ISentenceItem> sentenceItems =
-                sentenceItem => (!_separator.AllSeparators().Contains(sentenceItem))
+                sentenceItem => (!Separator.AllSeparators().Contains(sentenceItem))
                 ?_wordFactory.Create(sentenceItem)
                 : _punctuationFactory.Create(sentenceItem);
             foreach (Match match in _sentenceItems.Matches(source))
@@ -82,7 +81,6 @@ namespace Text_model
         }
         public Parser()
         {
-            _separator = new Separator();
             _wordFactory = new WordFactory();
             _punctuationFactory = new PunctuationFactory();
         }

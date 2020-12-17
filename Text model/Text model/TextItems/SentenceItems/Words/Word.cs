@@ -39,5 +39,15 @@ namespace Text_model
         {
             return Symbols.GetEnumerator();
         }
+        public override bool Equals(object obj)
+        {
+            if (obj.GetType() != this.GetType()) return false;
+            Word word = (Word)obj;
+            return (this.Chars == word.Chars);
+        }
+        public override int GetHashCode()
+        {
+            return Chars.GetHashCode();
+        }
     }
 }

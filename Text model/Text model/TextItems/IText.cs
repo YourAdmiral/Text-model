@@ -10,5 +10,8 @@ namespace Text_model
         public void AddSentence(ISentence sentence);
         public void AddSentences(ICollection<ISentence> sentences);
         public string TextToString();
+        public IEnumerable<ISentence> GetOrderSentences();
+        public IEnumerable<ISentenceItem> GetWordsFromQuestions(int length);
+        public void DeleteWords(int length);
     }
 }

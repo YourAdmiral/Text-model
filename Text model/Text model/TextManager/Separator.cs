@@ -7,42 +7,42 @@ namespace Text_model
 {
     internal class Separator
     {
-        private string[] _sentence = new string[] { "?", "!", ".", "...", "?!", "!?" };
-        private string[] _word = new string[] { " ", " - ", ",", ";", ":" };
-        private string[] _open = new string[] { "(", "[", "{", "<", "«" };
-        private string[] _close = new string[] { ")", "]", "}", ">", "»" };
-        private string[] _quotes = new string[] { "\"", "'" };
-        private string[] _math = new string[] { "*", "/", "-", "+", ">=", "=<", "=", "==", "!=" };
-        private string[] _all = new string[] { 
+        private static string[] _sentence = new string[] { "?", "!", ".", "...", "?!", "!?" };
+        private static string[] _word = new string[] { " ", " - ", ",", ";", ":" };
+        private static string[] _open = new string[] { "(", "[", "{", "<", "«" };
+        private static string[] _close = new string[] { ")", "]", "}", ">", "»" };
+        private static string[] _quotes = new string[] { "\"", "'" };
+        private static string[] _math = new string[] { "*", "/", "-", "+", ">=", "=<", "=", "==", "!=" };
+        private static string[] _all = new string[] { 
             "?", "!", ".", "...", "?!", "!?", ",", ":", ";", "'", " ", " - ",
             "(", ")", "[", "]", "{", "}", "<", ">",  
             "*", "/", "\"", "-", "+", ">=", "=<", "=", "==", "!=" 
         };
-        public IEnumerable<string> SentenceSeparators()
+        public static IEnumerable<string> SentenceSeparators()
         {
             return _sentence.AsEnumerable();
         }
-        public IEnumerable<string> WordSeparators()
+        public static IEnumerable<string> WordSeparators()
         {
             return _word.AsEnumerable();
         }
-        public IEnumerable<string> OpenSeparators()
+        public static IEnumerable<string> OpenSeparators()
         {
             return _open.AsEnumerable();
         }
-        public IEnumerable<string> CloseSeparators()
+        public static IEnumerable<string> CloseSeparators()
         {
             return _close.AsEnumerable();
         }
-        public IEnumerable<string> QuotesSeparators()
+        public static IEnumerable<string> QuotesSeparators()
         {
             return _quotes.AsEnumerable();
         }
-        public IEnumerable<string> MathSeparators()
+        public static IEnumerable<string> MathSeparators()
         {
             return _math.AsEnumerable();
         }
-        public IEnumerable<string> AllSeparators()
+        public static IEnumerable<string> AllSeparators()
         {
             return _all.AsEnumerable();
         }

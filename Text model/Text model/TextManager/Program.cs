@@ -10,14 +10,37 @@ namespace Text_model
     {
         static void Main(string[] args)
         {
-            var parser = new Parser();
-            var streamReader = new StreamReader(@"E:\GitHub\Text-model\Text model\Text model\Text.txt", Encoding.Default);
-            var text = parser.ParseText(streamReader);
-            Console.WriteLine(text.TextToString());
-            Console.WriteLine("First sentence: ");
-            foreach (var item in text.Sentences[1])
+            try
             {
-                Console.WriteLine(item.Chars + " " + item.GetType());
+                var parser = new Parser();
+                var streamReader = new StreamReader(@"E:\GitHub\Text-model\Text model\Text model\Text.txt", Encoding.Default);
+                var text = parser.ParseText(streamReader);
+                Console.WriteLine(text.TextToString());
+                Console.WriteLine("First sentence: ");
+                foreach (var sentence in text.Sentences[1])
+                {
+                    Console.WriteLine(sentence.Chars + " " + sentence.GetType());
+                }
+                Console.WriteLine("----------");
+                Console.WriteLine("Ordered sentences: ");
+                foreach (var sentence in text.GetOrderSentences())
+                {
+                    Console.WriteLine(sentence.SentenceToString());
+                }
+                Console.WriteLine("----------");
+                Console.WriteLine("Words of a certain length in interrogative sentences: ");
+                foreach (var word in text.GetWordsFromQuestions(3))
+                {
+                    Console.WriteLine(word.Chars);
+                }
+                Console.WriteLine("----------");
+                Console.WriteLine("Delete words of a certain length beginning with a consonant: ");
+                text.DeleteWords(3);
+                Console.WriteLine(text.TextToString());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
         }
     }
