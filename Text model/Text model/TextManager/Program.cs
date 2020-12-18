@@ -17,12 +17,14 @@ namespace Text_model
                 IText text = parser.ParseText(streamReader);
                 Console.WriteLine(text.TextToString());
                 Console.WriteLine("----------");
+
                 Console.WriteLine("Ordered sentences: ");
                 foreach (var sentence in text.GetOrderSentences())
                 {
                     Console.WriteLine(sentence.SentenceToString());
                 }
                 Console.WriteLine("----------");
+
                 Console.WriteLine("Words of a certain length in interrogative sentences: ");
                 int num1 = GetNumber();
                 foreach (var word in text.GetWordsFromQuestions(num1))
@@ -30,16 +32,44 @@ namespace Text_model
                     Console.WriteLine(word.Chars);
                 }
                 Console.WriteLine("----------");
+
                 Console.WriteLine("Delete words of a certain length beginning with a consonant: ");
                 int num2 = GetNumber();
                 text.DeleteWords(num2);
                 Console.WriteLine(text.TextToString());
                 Console.WriteLine("----------");
+
                 Console.WriteLine("Replace words of specified length with a specific substring: ");
                 int num3 = GetNumber();
                 string substring = GetWord();
                 text.Sentences[0].ReplaceWords(num3, substring);
                 Console.WriteLine(text.TextToString());
+                Console.WriteLine("1 - Сохранить файл, 2 - Выйти");
+
+                ConsoleKey choose = default;
+                while (choose != ConsoleKey.D1 || choose != ConsoleKey.D2)
+                {
+                    choose = Console.ReadKey(true).Key;
+                    switch (choose)
+                    {
+                        case ConsoleKey.D1:
+                            using (StreamWriter sw = new StreamWriter(@"E:\GitHub\Text-model\Text model\Text model\Text.txt", false, Encoding.Default))
+                            {
+                                foreach (var sentence in text.Sentences)
+                                {
+                                    sw.WriteLine(sentence.SentenceToString());
+                                }
+                            }
+                            Console.WriteLine("Файл сохранен!");
+                            break;
+                        case ConsoleKey.D2:
+                            Environment.Exit(0);
+                            break;
+                        default:
+                            Console.WriteLine("Вы выбрали неподходящее значение!");
+                            break;
+                    }
+                }
             }
             catch (Exception ex)
             {
