@@ -6,6 +6,6 @@ namespace Text_model
 {
     internal interface ISentenceItem
     {
-        public string Chars { get; }
+        public string Chars { get; set; }
     }
 }

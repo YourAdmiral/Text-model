@@ -21,6 +21,11 @@ namespace Text_model
                 }
                 return sb.ToString();
             }
+            set
+            {
+                Symbols = value != null ? value.Select(x => new Symbol(x)).ToArray() : null;
+                Length = Symbols.Length != 0 ? Symbols.Length : 0;
+            }
         }
         public Symbol this[int index]
         {
@@ -38,6 +43,16 @@ namespace Text_model
         IEnumerator IEnumerable.GetEnumerator()
         {
             return Symbols.GetEnumerator();
+        }
+        public override bool Equals(object obj)
+        {
+            if (obj.GetType() != this.GetType()) return false;
+            Word word = (Word)obj;
+            return (this.Chars == word.Chars);
+        }
+        public override int GetHashCode()
+        {
+            return Chars.GetHashCode();
         }
     }
 }

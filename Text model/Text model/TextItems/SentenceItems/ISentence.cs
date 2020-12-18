@@ -7,9 +7,10 @@ namespace Text_model
     internal interface ISentence : IEnumerable<ISentenceItem>
     {
         public IList<ISentenceItem> Items { get; }
-        public bool Remove(ISentenceItem item);
-        public int Count { get; }
+        public void Remove(ISentenceItem item);
         public void Add(ISentenceItem item);
+        public void ReplaceWords(int length, string word);
+        public int Count { get; }
         public string SentenceToString();
     }
 }

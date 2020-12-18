@@ -19,7 +19,7 @@
   <Class Name="Text_model.Sentence">
     <Position X="6.25" Y="2.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAIAAAAAAAAACBAAAAAABAQAAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <HashCode>AAIAAAAAAAAACBAACAAABAQBAAAAAAAEAAAAAAAAAAA=</HashCode>
       <FileName>TextItems\SentenceItems\Sentence.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -51,15 +51,15 @@
   <Class Name="Text_model.Separator">
     <Position X="11.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQBAIAAAAAAAAAAAAAAAQAAAAAAAAAAAJAAAAAAAAA=</HashCode>
-      <FileName>Separator.cs</FileName>
+      <HashCode>BAABBAAEAAAAAACAAAAAAwAABAAABAAAAABIBAAAAAE=</HashCode>
+      <FileName>TextManager\Separator.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Text_model.Parser">
-    <Position X="13.25" Y="1.75" Width="1.5" />
+    <Position X="13.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAACAAAAAQAAABgAAAAQAAAQACAAAAAAA=</HashCode>
-      <FileName>Parser.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABgAAAAAAAAQACAAAAAAA=</HashCode>
+      <FileName>TextManager\Parser.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Struct Name="Text_model.Symbol">
@@ -93,14 +93,14 @@
   <Interface Name="Text_model.ISentence">
     <Position X="6.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAIAAAAAAAAACAAAAAAABAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAIAAAAAAAAACAAACAAABAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>TextItems\SentenceItems\ISentence.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="Text_model.IText">
     <Position X="8" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AgAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AgAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAg=</HashCode>
       <FileName>TextItems\IText.cs</FileName>
     </TypeIdentifier>
   </Interface>

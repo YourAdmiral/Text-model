@@ -8,16 +8,7 @@ namespace Text_model
 {
     internal class Sentence : ISentence
     {
-        private Separator _separator = new Separator();
         public IList<ISentenceItem> Items { get; private set; }
-        public Sentence()
-        {
-            Items = new List<ISentenceItem>();
-        }
-        public Sentence(IList<ISentenceItem> source)
-        {
-            Items = source;
-        }
         public void Add(ISentenceItem item)
         {
             if (item != null)
@@ -25,18 +16,64 @@ namespace Text_model
             else
                 throw new NullReferenceException("");
         }
-        public bool Remove(ISentenceItem item)
+        public void Remove(ISentenceItem item)
         {
             if (item != null && Items.Contains(item))
             {
                 Items.Remove(item);
-                return true;
             }
-            return false;
+        }
+        public void ReplaceWords(int length, string word)
+        {
+            foreach (var item in Items)
+            {
+                if (item.GetType() == typeof(Word)
+                    && item.Chars.Length == length)
+                {
+                    item.Chars = word;
+                }
+            }
         }
         public int Count
         {
             get { return Items.Count; }
+        }
+        public string SentenceToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < Items.Count; i++)
+            {
+                if (Items[i].GetType() == typeof(Word))
+                {
+                    if (i != Items.Count - 1 && Items[i + 1].GetType() == typeof(Word))
+                    {
+                        sb.Append(Items[i].Chars + " ");
+                    }
+                    else
+                    {
+                        sb.Append(Items[i].Chars);
+                    }
+                }
+                if (Items[i].GetType() == typeof(Punctuation))
+                {
+                    if (i != Items.Count - 1 && Items[i + 1].GetType() == typeof(Word))
+                    {
+                        if (Separator.QuotesSeparators().Contains(Items[i].Chars))
+                        {
+                            sb.Append(Items[i].Chars);
+                        }
+                        else
+                        {
+                            sb.Append(Items[i].Chars + " ");
+                        }
+                    }
+                    else
+                    {
+                        sb.Append(Items[i].Chars);
+                    }
+                }
+            }
+            return sb.ToString();
         }
         public IEnumerator<ISentenceItem> GetEnumerator()
         {
@@ -46,14 +83,13 @@ namespace Text_model
         {
             return Items.GetEnumerator();
         }
-        public string SentenceToString()
+        public Sentence()
         {
-            StringBuilder sb = new StringBuilder();
-            foreach (var item in Items)
-            {
-                sb.Append(item.Chars);
-            }
-            return sb.ToString();
+            Items = new List<ISentenceItem>();
+        }
+        public Sentence(IList<ISentenceItem> source)
+        {
+            Items = source;
         }
     }
 }
