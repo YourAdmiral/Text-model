@@ -14,7 +14,7 @@ namespace Text_model
             {
                 var parser = new Parser();
                 var streamReader = new StreamReader(@"E:\GitHub\Text-model\Text model\Text model\Text.txt", Encoding.Default);
-                var text = parser.ParseText(streamReader);
+                IText text = parser.ParseText(streamReader);
                 Console.WriteLine(text.TextToString());
                 Console.WriteLine("----------");
                 Console.WriteLine("Ordered sentences: ");

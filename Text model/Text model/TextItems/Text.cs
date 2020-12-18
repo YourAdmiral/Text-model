@@ -10,14 +10,7 @@ namespace Text_model
     internal class Text : IText
     {
         public IList<ISentence> Sentences { get; private set; }
-        public Text()
-        {
-            Sentences = new List<ISentence>();
-        }
-        public Text(IList<ISentence> sentences)
-        {
-            Sentences = sentences;
-        }
+        public ISentence this[int index] => Sentences[index];
         public void AddSentence(ISentence sentence)
         {
             Sentences.Add(sentence);
@@ -29,6 +22,14 @@ namespace Text_model
                 AddSentence(sentence);
             }
         }
+        public Text()
+        {
+            Sentences = new List<ISentence>();
+        }
+        public Text(IList<ISentence> sentences)
+        {
+            Sentences = sentences;
+        }
         public IEnumerator<ISentence> GetEnumerator()
         {
             return Sentences.AsEnumerable().GetEnumerator();
@@ -36,16 +37,6 @@ namespace Text_model
         IEnumerator IEnumerable.GetEnumerator()
         {
             return Sentences.GetEnumerator();
-        }
-        public ISentence this[int index] => Sentences[index];
-        public string TextToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            foreach (ISentence sentence in Sentences)
-            {
-                sb.Append(sentence.SentenceToString() + "\n");
-            }
-            return sb.ToString();
         }
         public IEnumerable<ISentence> GetOrderSentences()
         {
@@ -62,6 +53,15 @@ namespace Text_model
                 words.AddRange(sentence.Items.Where(item => item.GetType() == typeof(Word) && item.Chars.Length == length));
             }
             return words.Distinct();
+        }
+        public string TextToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (ISentence sentence in Sentences)
+            {
+                sb.Append(sentence.SentenceToString() + "\n");
+            }
+            return sb.ToString();
         }
         public void DeleteWords(int length)
         {

@@ -9,14 +9,6 @@ namespace Text_model
     internal class Sentence : ISentence
     {
         public IList<ISentenceItem> Items { get; private set; }
-        public Sentence()
-        {
-            Items = new List<ISentenceItem>();
-        }
-        public Sentence(IList<ISentenceItem> source)
-        {
-            Items = source;
-        }
         public void Add(ISentenceItem item)
         {
             if (item != null)
@@ -31,17 +23,20 @@ namespace Text_model
                 Items.Remove(item);
             }
         }
+        public void ReplaceWords(int length, string word)
+        {
+            foreach (var item in Items)
+            {
+                if (item.GetType() == typeof(Word)
+                    && item.Chars.Length == length)
+                {
+                    item.Chars = word;
+                }
+            }
+        }
         public int Count
         {
             get { return Items.Count; }
-        }
-        public IEnumerator<ISentenceItem> GetEnumerator()
-        {
-            return Items.AsEnumerable().GetEnumerator();
-        }
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return Items.GetEnumerator();
         }
         public string SentenceToString()
         {
@@ -80,16 +75,21 @@ namespace Text_model
             }
             return sb.ToString();
         }
-        public void ReplaceWords(int length, string word)
+        public IEnumerator<ISentenceItem> GetEnumerator()
         {
-            foreach (var item in Items)
-            {
-                if (item.GetType()==typeof(Word) 
-                    && item.Chars.Length==length)
-                {
-                    item.Chars = word; 
-                }
-            }
+            return Items.AsEnumerable().GetEnumerator();
+        }
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return Items.GetEnumerator();
+        }
+        public Sentence()
+        {
+            Items = new List<ISentenceItem>();
+        }
+        public Sentence(IList<ISentenceItem> source)
+        {
+            Items = source;
         }
     }
 }

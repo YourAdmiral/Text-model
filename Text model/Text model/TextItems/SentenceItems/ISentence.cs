@@ -8,9 +8,9 @@ namespace Text_model
     {
         public IList<ISentenceItem> Items { get; }
         public void Remove(ISentenceItem item);
-        public int Count { get; }
         public void Add(ISentenceItem item);
-        public string SentenceToString();
         public void ReplaceWords(int length, string word);
+        public int Count { get; }
+        public string SentenceToString();
     }
 }

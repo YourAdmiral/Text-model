@@ -6,8 +6,8 @@ namespace Text_model
 {
     internal interface IWord : ISentenceItem, IEnumerable<Symbol>
     {
-        public int Length { get; }
         public Symbol this[int index] { get; }
         public Symbol[] Symbols { get; }
+        public int Length { get; }
     }
 }
