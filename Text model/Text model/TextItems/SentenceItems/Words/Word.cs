@@ -21,6 +21,11 @@ namespace Text_model
                 }
                 return sb.ToString();
             }
+            set
+            {
+                Symbols = value != null ? value.Select(x => new Symbol(x)).ToArray() : null;
+                Length = Symbols.Length != 0 ? Symbols.Length : 0;
+            }
         }
         public Symbol this[int index]
         {

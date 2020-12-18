@@ -16,11 +16,6 @@ namespace Text_model
                 var streamReader = new StreamReader(@"E:\GitHub\Text-model\Text model\Text model\Text.txt", Encoding.Default);
                 var text = parser.ParseText(streamReader);
                 Console.WriteLine(text.TextToString());
-                Console.WriteLine("First sentence: ");
-                foreach (var sentence in text.Sentences[1])
-                {
-                    Console.WriteLine(sentence.Chars + " " + sentence.GetType());
-                }
                 Console.WriteLine("----------");
                 Console.WriteLine("Ordered sentences: ");
                 foreach (var sentence in text.GetOrderSentences())
@@ -29,19 +24,44 @@ namespace Text_model
                 }
                 Console.WriteLine("----------");
                 Console.WriteLine("Words of a certain length in interrogative sentences: ");
-                foreach (var word in text.GetWordsFromQuestions(3))
+                int num1 = GetNumber();
+                foreach (var word in text.GetWordsFromQuestions(num1))
                 {
                     Console.WriteLine(word.Chars);
                 }
                 Console.WriteLine("----------");
                 Console.WriteLine("Delete words of a certain length beginning with a consonant: ");
-                text.DeleteWords(3);
+                int num2 = GetNumber();
+                text.DeleteWords(num2);
+                Console.WriteLine(text.TextToString());
+                Console.WriteLine("----------");
+                Console.WriteLine("Replace words of specified length with a specific substring: ");
+                int num3 = GetNumber();
+                string substring = GetWord();
+                text.Sentences[0].ReplaceWords(num3, substring);
                 Console.WriteLine(text.TextToString());
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
+        }
+        private static int GetNumber()
+        {
+            Console.WriteLine("Enter number: ");
+            int num = 0;
+            while (num == 0)
+            {
+                num = Convert.ToInt32(Console.ReadLine());
+                if (num < 0)
+                    throw new Exception();
+            }
+            return num;
+        }
+        private static string GetWord()
+        {
+            Console.WriteLine("Enter substring: ");
+            return Console.ReadLine();
         }
     }
 }

@@ -24,14 +24,12 @@ namespace Text_model
             else
                 throw new NullReferenceException("");
         }
-        public bool Remove(ISentenceItem item)
+        public void Remove(ISentenceItem item)
         {
             if (item != null && Items.Contains(item))
             {
                 Items.Remove(item);
-                return true;
             }
-            return false;
         }
         public int Count
         {
@@ -81,6 +79,17 @@ namespace Text_model
                 }
             }
             return sb.ToString();
+        }
+        public void ReplaceWords(int length, string word)
+        {
+            foreach (var item in Items)
+            {
+                if (item.GetType()==typeof(Word) 
+                    && item.Chars.Length==length)
+                {
+                    item.Chars = word; 
+                }
+            }
         }
     }
 }
