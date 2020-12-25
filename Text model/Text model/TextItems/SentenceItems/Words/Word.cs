@@ -3,14 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Collections;
+using Text_model.TextItems.SentenceItems.Symbols;
 
-namespace Text_model
+namespace Text_model.TextItems.SentenceItems.Words
 {
     internal class Word : IWord
     {
-        public int Length { get; private set; }
         public Symbol[] Symbols { get; private set; }
-        public string Chars
+        public Symbol this[int index]
+        {
+            get { return Symbols[index]; }
+        }
+        public Word(string chars)
+        {
+            Symbols = chars != null ? chars.Select(x => new Symbol(x)).ToArray() : null;
+        }
+        public string Value
         {
             get
             {
@@ -24,17 +32,17 @@ namespace Text_model
             set
             {
                 Symbols = value != null ? value.Select(x => new Symbol(x)).ToArray() : null;
-                Length = Symbols.Length != 0 ? Symbols.Length : 0;
             }
         }
-        public Symbol this[int index]
+        public override bool Equals(object obj)
         {
-            get { return Symbols[index]; }
+            if (obj.GetType() != this.GetType()) return false;
+            Word word = (Word)obj;
+            return (this.Value == word.Value);
         }
-        public Word(string chars)
+        public override int GetHashCode()
         {
-            Symbols = chars != null ? chars.Select(x => new Symbol(x)).ToArray() : null;
-            Length = Symbols.Length != 0 ? Symbols.Length : 0;
+            return Value.GetHashCode();
         }
         public IEnumerator<Symbol> GetEnumerator()
         {
@@ -43,16 +51,6 @@ namespace Text_model
         IEnumerator IEnumerable.GetEnumerator()
         {
             return Symbols.GetEnumerator();
-        }
-        public override bool Equals(object obj)
-        {
-            if (obj.GetType() != this.GetType()) return false;
-            Word word = (Word)obj;
-            return (this.Chars == word.Chars);
-        }
-        public override int GetHashCode()
-        {
-            return Chars.GetHashCode();
         }
     }
 }

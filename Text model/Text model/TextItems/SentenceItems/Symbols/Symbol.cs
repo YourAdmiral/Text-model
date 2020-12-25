@@ -2,31 +2,20 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Text_model
+namespace Text_model.TextItems.SentenceItems.Symbols
 {
     internal struct Symbol
     {
-        private string _chars;
-        public string Chars
-        {
-            get { return _chars; }
-            private set { _chars = value; }
-        }
+        public string Chars { get; private set; }
         public Symbol(string chars)
         {
-            _chars = chars;
+            Chars = chars;
         }
         public Symbol(char source)
         {
-            _chars = String.Format("{0}", source);
+            Chars = String.Format("{0}", source);
         }
-        public bool IsUppercase
-        {
-            get { return _chars != null && _chars.Length >= 1 && char.IsLetter(_chars[0]) && char.IsUpper(_chars[0]); }
-        }
-        public bool IsLower
-        {
-            get { return _chars != null && _chars.Length >= 1 && char.IsLetter(_chars[0]) && char.IsLower(_chars[0]); }
-        }
+        public bool IsUpperCase => Chars != null && Chars.Length >= 1 && char.IsLetter(Chars[0]) && char.IsUpper(Chars[0]);
+        public bool IsLower => Chars != null && Chars.Length >= 1 && char.IsLetter(Chars[0]) && char.IsLower(Chars[0]);
     }
 }

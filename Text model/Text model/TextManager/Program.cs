@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using Text_model;
+using Text_model.TextItems;
+using Text_model.TextItems.SentenceItems;
+using Text_model.TextItems.SentenceItems.Words;
 
-namespace Text_model
+namespace Text_model.TextManager
 {
     class Program
     {
@@ -14,40 +18,44 @@ namespace Text_model
             {
                 var parser = new Parser();
                 var streamReader = new StreamReader(@"E:\GitHub\Text-model\Text model\Text model\Text.txt", Encoding.Default);
-                IText text = parser.ParseText(streamReader);
-                Console.WriteLine(text.TextToString());
+                var text = parser.ParseText(streamReader);
+                Console.WriteLine(text.ToString());
                 Console.WriteLine("----------");
 
                 Console.WriteLine("Ordered sentences: ");
-                foreach (var sentence in text.GetOrderSentences())
+
+               
+                foreach (var sentence in (text as Text).GetOrderSentences())
                 {
-                    Console.WriteLine(sentence.SentenceToString());
+                    Console.WriteLine(sentence.ToString());
                 }
                 Console.WriteLine("----------");
 
                 Console.WriteLine("Words of a certain length in interrogative sentences: ");
                 int num1 = GetNumber();
-                foreach (var word in text.GetWordsFromQuestions(num1))
+                foreach (var word in (text as Text).GetWordsFromQuestions(num1))
                 {
-                    Console.WriteLine(word.Chars);
+                    Console.WriteLine(word.Value);
                 }
                 Console.WriteLine("----------");
 
                 Console.WriteLine("Delete words of a certain length beginning with a consonant: ");
                 int num2 = GetNumber();
                 text.DeleteWords(num2);
-                Console.WriteLine(text.TextToString());
+                Console.WriteLine(text.ToString());
                 Console.WriteLine("----------");
 
                 Console.WriteLine("Replace words of specified length with a specific substring: ");
                 int num3 = GetNumber();
                 string substring = GetWord();
-                text.Sentences[0].ReplaceWords(num3, substring);
-                Console.WriteLine(text.TextToString());
-                Console.WriteLine("1 - Сохранить файл, 2 - Выйти");
+                ISentence newSentence = text.Sentences[0];
+                (newSentence as Sentence).ReplaceWords(num3, substring);
+                text.Sentences[0] = newSentence;
+                Console.WriteLine(text.ToString());
 
+                Console.WriteLine("1 - Сохранить файл, 2 - Выйти");
                 ConsoleKey choose = default;
-                while (choose != ConsoleKey.D1 || choose != ConsoleKey.D2)
+                while (choose != ConsoleKey.D2)
                 {
                     choose = Console.ReadKey(true).Key;
                     switch (choose)
@@ -57,7 +65,7 @@ namespace Text_model
                             {
                                 foreach (var sentence in text.Sentences)
                                 {
-                                    sw.WriteLine(sentence.SentenceToString());
+                                    sw.WriteLine(sentence.ToString());
                                 }
                             }
                             Console.WriteLine("Файл сохранен!");

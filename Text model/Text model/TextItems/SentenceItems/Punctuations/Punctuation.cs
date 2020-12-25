@@ -1,24 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Text_model.TextItems.SentenceItems.Symbols;
 
-namespace Text_model
+namespace Text_model.TextItems.SentenceItems.Punctuations
 {
     internal class Punctuation : IPunctuation
     {
-        private Symbol _value;
-        public Symbol Value
-        {
-            get { return _value; }
-        }
-        public string Chars
-        {
-            get { return Value.Chars; }
-            set { _value = new Symbol(value); }
-        }
+        public Symbol Symbol { get; private set; }
         public Punctuation(string chars)
         {
-            _value = new Symbol(chars);
+            Value = chars;
+        }
+        public string Value
+        {
+            get { return Symbol.Chars; }
+            set { Symbol = new Symbol(value); }
         }
     }
 }

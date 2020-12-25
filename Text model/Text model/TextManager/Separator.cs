@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Text_model
+namespace Text_model.TextManager
 {
     internal class Separator
     {

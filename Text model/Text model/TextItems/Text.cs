@@ -4,13 +4,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using Text_model.TextItems.SentenceItems;
+using Text_model.TextItems.SentenceItems.Words;
 
-namespace Text_model
+namespace Text_model.TextItems
 {
     internal class Text : IText
     {
         public IList<ISentence> Sentences { get; private set; }
         public ISentence this[int index] => Sentences[index];
+        public Text()
+        {
+            Sentences = new List<ISentence>();
+        }
+        public Text(IList<ISentence> sentences)
+        {
+            Sentences = sentences;
+        }
         public void AddSentence(ISentence sentence)
         {
             Sentences.Add(sentence);
@@ -22,21 +32,21 @@ namespace Text_model
                 AddSentence(sentence);
             }
         }
-        public Text()
+        public void DeleteWords(int length)
         {
-            Sentences = new List<ISentence>();
-        }
-        public Text(IList<ISentence> sentences)
-        {
-            Sentences = sentences;
-        }
-        public IEnumerator<ISentence> GetEnumerator()
-        {
-            return Sentences.AsEnumerable().GetEnumerator();
-        }
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return Sentences.GetEnumerator();
+            string pattern = @"^[qwrtypsdfghjklzxcvbnm](w*)";
+            foreach (var sentence in Sentences)
+            {
+                for (int i = 0; i < sentence.Items.Count; i++)
+                {
+                    if (sentence.Items[i].GetType() == typeof(Word)
+                    && sentence.Items[i].Value.Length == length
+                    && Regex.IsMatch(sentence.Items[i].Value, pattern, RegexOptions.IgnoreCase))
+                    {
+                        sentence.Remove(sentence.Items[i]);
+                    }
+                }
+            }
         }
         public IEnumerable<ISentence> GetOrderSentences()
         {
@@ -46,38 +56,30 @@ namespace Text_model
         {
             var words = new List<ISentenceItem>();
             foreach (var sentence in Sentences
-                .Where(sentence => sentence.Items.Last().Chars == "?"
-            || sentence.Items.Last().Chars == "!?"
-            || sentence.Items.Last().Chars == "?!"))
+                .Where(sentence => sentence.Items.Last().Value == "?"
+            || sentence.Items.Last().Value == "!?"
+            || sentence.Items.Last().Value == "?!"))
             {
-                words.AddRange(sentence.Items.Where(item => item.GetType() == typeof(Word) && item.Chars.Length == length));
+                words.AddRange(sentence.Items.Where(item => item.GetType() == typeof(Word) && item.Value.Length == length));
             }
             return words.Distinct();
         }
-        public string TextToString()
+        public IEnumerator<ISentence> GetEnumerator()
+        {
+            return Sentences.AsEnumerable().GetEnumerator();
+        }
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return Sentences.GetEnumerator();
+        }
+        public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            foreach (ISentence sentence in Sentences)
+            for (int i = 0; i < Sentences.Count; i++)
             {
-                sb.Append(sentence.SentenceToString() + "\n");
+                sb.Append(Sentences[i].ToString() + "\n");
             }
             return sb.ToString();
-        }
-        public void DeleteWords(int length)
-        {
-            string pattern = @"^[qwrtypsdfghjklzxcvbnm](w*)";
-            foreach (var sentence in Sentences)
-            {
-                foreach (var item in sentence.Items.ToList())
-                {
-                    if (item.GetType()==typeof(Word)
-                        && item.Chars.Length==length
-                        && Regex.IsMatch(item.Chars, pattern, RegexOptions.IgnoreCase))
-                    {
-                        sentence.Remove(item);
-                    }
-                }
-            }
         }
     }
 }

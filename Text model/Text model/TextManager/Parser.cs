@@ -5,8 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using Text_model.TextItems.SentenceItems;
+using Text_model.Factories;
+using Text_model.TextItems;
 
-namespace Text_model
+namespace Text_model.TextManager
 {
     internal class Parser
     {
@@ -18,6 +20,11 @@ namespace Text_model
         private Regex _sentences = new Regex(
         @"(?<=[\.*!\?])\s+(?=[А-Я]|[A-Z])|(?=\W&([А-Я]|[A-Z]))",
         RegexOptions.Compiled);
+        public Parser()
+        {
+            _wordFactory = new WordFactory();
+            _punctuationFactory = new PunctuationFactory();
+        }
         public IText ParseText(StreamReader reader)
         {
             IText textResult = new Text();
@@ -51,7 +58,6 @@ namespace Text_model
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                reader.Close();
             }
             finally
             {
@@ -71,18 +77,13 @@ namespace Text_model
             {
                 for (int i = 1; i < match.Groups.Count; i++)
                 {
-                    if (match.Groups[i].Value.Trim() != "")
+                    if (match.Groups[i].Value != "")
                     {
-                        result.Items.Add(sentenceItems(match.Groups[i].Value.Trim()));
+                        result.Items.Add(sentenceItems(match.Groups[i].Value));
                     }
                 }
             }
             return result;
-        }
-        public Parser()
-        {
-            _wordFactory = new WordFactory();
-            _punctuationFactory = new PunctuationFactory();
         }
     }
 }

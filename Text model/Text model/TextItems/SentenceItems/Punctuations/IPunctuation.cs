@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Text_model.TextItems.SentenceItems.Symbols;
 
-namespace Text_model
+namespace Text_model.TextItems.SentenceItems.Punctuations
 {
     internal interface IPunctuation : ISentenceItem
     {
-        public Symbol Value { get; }
+        public Symbol Symbol { get; }
     }
 }
