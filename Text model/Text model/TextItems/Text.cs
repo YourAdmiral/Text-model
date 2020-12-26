@@ -34,17 +34,24 @@ namespace Text_model.TextItems
         }
         public void DeleteWords(int length)
         {
+            int previous;
             string pattern = @"^[qwrtypsdfghjklzxcvbnm](w*)";
             foreach (var sentence in Sentences)
             {
+                previous = 0;
                 for (int i = 0; i < sentence.Items.Count; i++)
                 {
                     if (sentence.Items[i].GetType() == typeof(Word)
                     && sentence.Items[i].Value.Length == length
                     && Regex.IsMatch(sentence.Items[i].Value, pattern, RegexOptions.IgnoreCase))
                     {
-                        sentence.Remove(sentence.Items[i]);
+                        sentence.Items[i].Value = "";
+                        if (sentence.Items[previous].Value == " ")
+                        {
+                            sentence.Items[previous].Value = "";
+                        }
                     }
+                    previous = i;
                 }
             }
         }

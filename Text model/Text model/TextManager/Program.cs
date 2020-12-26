@@ -23,8 +23,6 @@ namespace Text_model.TextManager
                 Console.WriteLine("----------");
 
                 Console.WriteLine("Ordered sentences: ");
-
-               
                 foreach (var sentence in (text as Text).GetOrderSentences())
                 {
                     Console.WriteLine(sentence.ToString());
